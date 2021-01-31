@@ -6,7 +6,7 @@ class DetailTourPage extends Page {
     }
 
     get buttonMaximumAmountOfDays() {
-        return $(':nth-child(1) > :nth-child(6) > .btn');
+        return $(':nth-child(1) > :nth-child(6) > .btn ');
     }
 
     get inputFirstName() {
@@ -27,7 +27,10 @@ class DetailTourPage extends Page {
 
     get buttonSubmit() {
         return $(' .col> #ClickMyButton');
+    }
 
+    get getCookiesButton() {
+        return $('.cc-btn')
     }
 
     async validateAmountOfAdults(expectedAmountOfAdults) {
@@ -37,13 +40,14 @@ class DetailTourPage extends Page {
 
     async choseMaximumAmountOfDays() {
        
+        await (await this.getCookiesButton).click();
         await (await this.buttonMaximumAmountOfDays).scrollIntoView();
-        await (await this.buttonMaximumAmountOfDays).waitForClickable({ timeout: 30000 });
         await (await this.buttonMaximumAmountOfDays).click();
     }
 
 
     async fillFormForCompleteBookingTour(firstName, email, phone, address) {
+        await (await this.inputFirstName).waitForDisplayed({ timeout: 3000 });
         await (await this.inputFirstName).addValue(firstName);
         await (await this.inputEmail).addValue(email);
         await (await this.inputPhone).addValue(phone);

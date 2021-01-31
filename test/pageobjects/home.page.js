@@ -59,7 +59,6 @@ class HomePage extends Page {
         await (await this.inputForDateTour).clearValue();
         await (await this.inputForDateTour).addValue(dateOfStartTour);
         await (await this.inputForIncreaseAmountOfAdults).click();
-        // await browser.keys("\uE007"); 
         await (await this.buttonSearchTour).click();
     }
 }

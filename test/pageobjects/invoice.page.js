@@ -16,6 +16,10 @@ class InvoicePage extends Page {
     get payment() {
         return $('center > .btn-primary')
     }
+
+    get dropDownSelect() {
+        return $('#gateway_chosen > .chosen-single');
+    }
     
     get paymentDropDownByCreditCard() {
         return $('[data-option-array-index="3"]')
@@ -32,6 +36,7 @@ class InvoicePage extends Page {
     
     async paymentByCreditCard() {
         await (await this.payment).click();
+        await (await this.dropDownSelect).click();
         await (await this.paymentDropDownByCreditCard).click();
     
     }
