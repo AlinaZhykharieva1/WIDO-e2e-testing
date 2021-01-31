@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wdio wdio.conf.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "mocha",
+    "webdriverio",
+    "e2e",
+    "test automation",
+    "javascript"
+  ],
+  "author": "Alina Zhykharieva",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -19,6 +25,9 @@
     "@wdio/mocha-framework": "^6.11.0",
     "@wdio/spec-reporter": "^6.11.0",
     "chromedriver": "^87.0.7",
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "wdio-chromedriver-service": "^6.0.4"
   },
   "dependencies": {
