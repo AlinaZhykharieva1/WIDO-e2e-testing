@@ -23,7 +23,7 @@ describe('PHP travels platform', () => {
       credentials = await requestPageWithCredentials();
     });
 
-    it('Check that user can book and when invalid card for payment added error message displayed', async () => {
+    it('Check that user can book tour and when invalid card for payment added error message displayed', async () => {
         await browser.url('/');
 
         await browser.waitUntil(() => {
