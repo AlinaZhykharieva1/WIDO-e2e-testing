@@ -13,10 +13,10 @@ class LoginPage extends Page {
         return $('button.loginbtn')
     }
 
-    loginUser(login, password) {
-        this.inputLogin.addValue(login)
-        this.inputPassword.addValue(password)
-        this.buttonLogIn.click()
+    async loginUser(login, password) {
+    await (await this.inputLogin).addValue(login)
+    await (await this.inputPassword).addValue(password)
+    await (await this.buttonLogIn).click()
     }
 }
 

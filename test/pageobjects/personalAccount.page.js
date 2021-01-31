@@ -11,13 +11,13 @@ class PersonalAccountPage extends Page{
     }
 
 
-    validateUserLoginIsCompleted(expectedGreeting) {
-        expect(this.greeting).toHaveText(expectedGreeting);
+    async validateUserLoginIsCompleted(expectedGreeting) {
+    await expect(await this.greeting).toHaveText(expectedGreeting);
 
     }
 
-    goToHomePage() {
-        this.headerLogo.click()
+    async goToHomePage() {
+    await (await this.headerLogo).click();
     }
 }
 

@@ -1,9 +1,9 @@
 import Page from "./page";
 
-class HomePage extends Page{
-    
+class HomePage extends Page {
+
     get accountMenu() {
-        return $(':nth-child(3) > .dropdown > a')
+        return $(':nth-child(3) > .dropdown > a');
     }
 
     get loginSubMenu() {
@@ -15,15 +15,15 @@ class HomePage extends Page{
     }
 
     get inputTour() {
-        return $('#s2id_autogen22');
+        return $('.locationlisttours >.select2-focusser.select2-offscreen');
     }
 
     get tourInDropDown() {
-        return $('.select2-results-dept-1 > .select2-result-label');
+        return $('.select2-results-dept-1 >.select2-result-label >.select2-match');
     }
 
     get tourType() {
-        return $('#tourtype_chosen ');
+        return $('#tourtype_chosen');
     }
 
     get tourTypeInDropDown() {
@@ -31,40 +31,37 @@ class HomePage extends Page{
     }
 
     get inputForDateTour() {
-        return $('.form-icon-left > #DateTours');
+        return $('#tours > .ftab-inner > .form-search-main-01 > form > .form-inner > .mb-20 > .col-lg-4 > :nth-child(1) > .gap-10 > .col-md-12 > .col-inner > .form-people-thread > .row > #airDatepickerRange-hotel > .form-group > .form-icon-left > #DateTours');
     }
 
     get inputForIncreaseAmountOfAdults() {
-        return $('.bootstrap-touchspin-up');
+        return $('#tours > .ftab-inner > .form-search-main-01 > form > .form-inner > .mb-20 > .col-lg-4 > :nth-child(1) > .gap-10 > .col-md-12 > .col-inner > .form-people-thread > .row > :nth-child(2) > .form-group > .form-icon-left > .input-group > .input-group-btn-vertical > .bootstrap-touchspin-up');
     }
 
     get buttonSearchTour() {
         return $('#tours > .ftab-inner > .form-search-main-01 > form > .form-inner > .mb-20 > .col-lg-2 > .btn');
     }
-     
-    clickLogin() {
-       this.accountMenu.click();
+
+    async clickLogin() {
+        await (await this.accountMenu).click();
+        await (await this.loginSubMenu).click();
+    }
+    
+    async clickToursTab() {
+        await (await this.toursTab).click();
     }
 
-    clickSubMenu() {
-        this.loginSubMenu.click();
-    }
-
-    clickToursTab() {
-        this.toursTab.click();
-    }
-
-    searchTour(tourName, dateOfStartTour) {
-        this.inputTour.type(tourName).click({force: true});
-        this.tourInDropDown.click();
-        this.tourType.click();
-        this.tourTypeInDropDown.click();
-        this.inputForDateTour.eq(2).clear();
-        this.inputForDateTour.eq(2).type(dateOfStartTour);
-        this.inputForIncreaseAmountOfAdults.eq(7).click();
-        this.buttonSearchTour.click();
+    async searchTour(tourName, dateOfStartTour) {
+        await (await this.inputTour).addValue(tourName);
+        await (await this.tourInDropDown).click();
+        await (await this.tourType).click();
+        await (await this.tourTypeInDropDown).click();
+        await (await this.inputForDateTour).clearValue();
+        await (await this.inputForDateTour).addValue(dateOfStartTour);
+        await (await this.inputForIncreaseAmountOfAdults).click();
+        // await browser.keys("\uE007"); 
+        await (await this.buttonSearchTour).click();
     }
 }
 
 export default new HomePage();
-
