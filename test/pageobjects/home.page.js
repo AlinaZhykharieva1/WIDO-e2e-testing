@@ -31,11 +31,11 @@ class HomePage extends Page {
     }
 
     get inputForDateTour() {
-        return $('#tours > .ftab-inner > .form-search-main-01 > form > .form-inner > .mb-20 > .col-lg-4 > :nth-child(1) > .gap-10 > .col-md-12 > .col-inner > .form-people-thread > .row > #airDatepickerRange-hotel > .form-group > .form-icon-left > #DateTours');
+        return $('#tours #DateTours');
     }
 
     get inputForIncreaseAmountOfAdults() {
-        return $('#tours > .ftab-inner > .form-search-main-01 > form > .form-inner > .mb-20 > .col-lg-4 > :nth-child(1) > .gap-10 > .col-md-12 > .col-inner > .form-people-thread > .row > :nth-child(2) > .form-group > .form-icon-left > .input-group > .input-group-btn-vertical > .bootstrap-touchspin-up');
+        return $('#tours input[name="adults"] ~ .input-group-btn-vertical > button[class*="bootstrap-touchspin-up"]');
     }
 
     get buttonSearchTour() {
