@@ -41,7 +41,6 @@ class DetailTourPage extends Page {
     async choseMaximumAmountOfDays() {
        
         await (await this.getCookiesButton).click();
-        await (await this.buttonMaximumAmountOfDays).scrollIntoView();
         await (await this.buttonMaximumAmountOfDays).click();
     }
 
@@ -55,4 +54,5 @@ class DetailTourPage extends Page {
         await (await this.buttonSubmit).click();
     }
 }
+
 export default new DetailTourPage();
