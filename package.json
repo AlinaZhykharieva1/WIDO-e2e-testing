@@ -32,6 +32,7 @@
     "wdio-chromedriver-service": "^6.0.4"
   },
   "dependencies": {
+    "@wdio/logger": "^7.0.0",
     "axios": "^0.21.1"
   }
 }
