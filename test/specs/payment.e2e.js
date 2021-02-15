@@ -3,9 +3,12 @@ import LoginPage from '../utils/pageobjects/login.page';
 import PersonalAccountPage from '../utils/pageobjects/personalAccount.page';
 import DetailTourPage from '../utils/pageobjects/detail-tour.page';
 import InvoicePage from '../utils/pageobjects/invoice.page';
+import Header from '../utils/pageobjects/header';
 import InvoicePageValidator from '../utils/validators/invoice-page-validator';
 import requestPageWithCredentials from '../utils/helpers/get-credentials';
+import waitOfRedirect from '../utils/waiters/wait-of-redirect';
 
+const waitingPartOfUrl = 'home';
 const tourName = 'Big Bus Tour of Dubai';
 const DateOfTourStart = '06.05.2021';
 const expectedAmountOfAdults = '2';
@@ -25,12 +28,12 @@ describe('PHP travels platform', () => {
 
   it('Check that user can book tour and when invalid card for payment added error message displayed', async () => {
     await browser.url('/');
-
-    await browser.waitUntil(() => browser.getUrl().then((pageUrl) => pageUrl.indexOf('home') > -1), 5000);
-    await HomePage.clickLogin();
+    // await browser.waitUntil(() => browser.getUrl().then((pageUrl) => pageUrl.indexOf('home') > -1), 5000);
+    await waitOfRedirect(waitingPartOfUrl);
+    await Header.clickLogin();
     await LoginPage.loginUser(credentials.login, credentials.password);
     await PersonalAccountPage.validateUserLoginIsCompleted(expectedGreeting);
-    await PersonalAccountPage.goToHomePage();
+    await Header.goToHomePage();
     await HomePage.clickToursTab();
     await HomePage.searchTour(tourName, DateOfTourStart);
     await DetailTourPage.validateAmountOfAdults(expectedAmountOfAdults);

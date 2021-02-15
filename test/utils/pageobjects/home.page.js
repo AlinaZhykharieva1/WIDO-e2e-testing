@@ -1,14 +1,6 @@
 import Page from './page';
 
 class HomePage extends Page {
-  get accountMenu() {
-    return $(':nth-child(3) > .dropdown > a');
-  }
-
-  get loginSubMenu() {
-    return $('a[href*="login"]');
-  }
-
   get toursTab() {
     return $('a.tours');
   }
@@ -39,11 +31,6 @@ class HomePage extends Page {
 
   get buttonSearchTour() {
     return $('#tours > .ftab-inner > .form-search-main-01 > form > .form-inner > .mb-20 > .col-lg-2 > .btn');
-  }
-
-  async clickLogin() {
-    await (await this.accountMenu).click();
-    await (await this.loginSubMenu).click();
   }
 
   async clickToursTab() {
