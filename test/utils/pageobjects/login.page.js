@@ -1,4 +1,7 @@
 import Page from './page';
+import logger from '@wdio/logger';
+
+const log = logger('myLogg');
 
 class LoginPage extends Page {
   get inputLogin() {
@@ -15,9 +18,11 @@ class LoginPage extends Page {
 
   async loginUser(login, password) {
     await (await this.inputLogin).addValue(login);
+    log.info(`to input added ${login}`);
     await (await this.inputPassword).addValue(password);
+    log.info(`to input added ${password}`);
     await (await this.buttonLogIn).click();
   }
 }
 
-module.exports = new LoginPage();
+export default new LoginPage();

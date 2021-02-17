@@ -28,7 +28,6 @@ describe('PHP travels platform', () => {
 
   it('Check that user can book tour and when invalid card for payment added error message displayed', async () => {
     await browser.url('/');
-    // await browser.waitUntil(() => browser.getUrl().then((pageUrl) => pageUrl.indexOf('home') > -1), 5000);
     await waitOfRedirect(waitingPartOfUrl);
     await Header.clickLogin();
     await LoginPage.loginUser(credentials.login, credentials.password);
