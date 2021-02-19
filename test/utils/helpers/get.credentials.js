@@ -1,5 +1,6 @@
+import cfDecodeEmail from './decode.email';
+
 const axios = require('axios');
-const cfDecodeEmail = require('./decode-email');
 
 const urlWithCred = 'https://phptravels.com/demo/';
 
@@ -12,8 +13,7 @@ async function requestPageWithCredentials() {
       credentials.login = cfDecodeEmail(response.data.match(loginRegexp)[0]);
       credentials.password = (response.data.match(passwordRegexp)[0]).trim();
       return credentials;
-    })
-    .catch((err) => (err));
+    });
 }
 
 export default requestPageWithCredentials;

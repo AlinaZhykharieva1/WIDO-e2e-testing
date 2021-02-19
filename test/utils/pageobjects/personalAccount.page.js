@@ -1,6 +1,4 @@
-import Page from './page';
-
-class PersonalAccountPage extends Page {
+class PersonalAccountPage {
   get greeting() {
     return $('h3.text-align-left');
   }
@@ -10,4 +8,4 @@ class PersonalAccountPage extends Page {
   }
 }
 
-module.exports = new PersonalAccountPage();
+export default new PersonalAccountPage();

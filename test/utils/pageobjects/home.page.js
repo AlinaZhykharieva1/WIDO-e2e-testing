@@ -1,6 +1,4 @@
-import Page from './page';
-
-class HomePage extends Page {
+class HomePage {
   get toursTab() {
     return $('a.tours');
   }

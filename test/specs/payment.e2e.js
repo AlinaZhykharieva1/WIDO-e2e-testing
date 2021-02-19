@@ -1,24 +1,28 @@
 import HomePage from '../utils/pageobjects/home.page';
 import LoginPage from '../utils/pageobjects/login.page';
 import PersonalAccountPage from '../utils/pageobjects/personalAccount.page';
-import DetailTourPage from '../utils/pageobjects/detail-tour.page';
+import DetailTourPage from '../utils/pageobjects/detail.tour.page';
 import InvoicePage from '../utils/pageobjects/invoice.page';
-import Header from '../utils/pageobjects/header';
-import InvoicePageValidator from '../utils/validators/invoice-page-validator';
-import requestPageWithCredentials from '../utils/helpers/get-credentials';
-import waitOfRedirect from '../utils/waiters/wait-of-redirect';
+import Header from '../utils/pageobjects/pageComponents/header';
+import InvoicePageValidator from '../utils/validators/invoice.page.validator';
+import requestPageWithCredentials from '../utils/helpers/get.credentials';
+
+import dataGeneration from '../utils/helpers/date.generation';
 
 const waitingPartOfUrl = 'home';
-const tourName = 'Big Bus Tour of Dubai';
-const DateOfTourStart = '06.05.2021';
-const expectedAmountOfAdults = '2';
-const expectedBookingInfo = {
-  firstName: 'Anna',
+const tourDetail = {
+  tourName : 'Big Bus Tour of Dubai',
+  dateOfTourStart : dataGeneration(30)
+};
+const bookingInfo = {
+  name: 'Anna',
   address: 'R2, Avenue du Maroc',
   phone: '+3805665656',
   email: 'dre@gh.com',
+  expectedGreeting : 'Hi, Demo User',
+  expectedAmountOfAdults : '2'
 };
-const expectedGreeting = 'Hi, Demo User';
+
 
 describe('PHP travels platform', () => {
   let credentials;
@@ -28,22 +32,17 @@ describe('PHP travels platform', () => {
 
   it('Check that user can book tour and when invalid card for payment added error message displayed', async () => {
     await browser.url('/');
-    await waitOfRedirect(waitingPartOfUrl);
     await Header.clickLogin();
     await LoginPage.loginUser(credentials.login, credentials.password);
-    await PersonalAccountPage.validateUserLoginIsCompleted(expectedGreeting);
+    await PersonalAccountPage.validateUserLoginIsCompleted(bookingInfo.expectedGreeting);
     await Header.goToHomePage();
     await HomePage.clickToursTab();
-    await HomePage.searchTour(tourName, DateOfTourStart);
-    await DetailTourPage.validateAmountOfAdults(expectedAmountOfAdults);
+    await HomePage.searchTour(tourDetail.tourName, tourDetail.dateOfTourStart);
+    await DetailTourPage.validateAmountOfAdults(bookingInfo.expectedAmountOfAdults);
     await DetailTourPage.choseMaximumAmountOfDays();
-    await DetailTourPage
-      .fillFormForCompleteBookingTour(expectedBookingInfo.firstName, expectedBookingInfo.email,
-        expectedBookingInfo.phone, expectedBookingInfo.address);
-    await InvoicePageValidator
-      .comparingDetailsOfBooking(expectedBookingInfo.firstName,
-        expectedBookingInfo.address, expectedBookingInfo.phone);
-    await InvoicePage.paymentByCreditCard();
-    await InvoicePage.checkingThatMessageAppearsWhenInvalidDataIsEntered();
+    await DetailTourPage.fillFormForCompleteBookingTour(bookingInfo);
+    await InvoicePageValidator.comparingDetailsOfBooking(bookingInfo);
+    await InvoicePage.performPayByCreditCard();
+    await InvoicePage.validateInvalidDataErrorMessage();
   });
 });

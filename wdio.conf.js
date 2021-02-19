@@ -22,7 +22,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './features/**/*.feature'
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -134,7 +134,7 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: 'cucumber',
+    framework: 'mocha',
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
@@ -155,7 +155,7 @@ exports.config = {
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
-    cucumberOpts: {
+    mochaOpts: {
         ui: 'bdd',
         timeout: 60000,
         require: ['@babel/register'],

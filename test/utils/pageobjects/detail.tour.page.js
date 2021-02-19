@@ -1,6 +1,4 @@
-import Page from './page';
-
-class DetailTourPage extends Page {
+class DetailTourPage {
   get amountOfAdults() {
     return $('#selectedAdults');
   }
@@ -42,12 +40,12 @@ class DetailTourPage extends Page {
     await (await this.buttonMaximumAmountOfDays).click();
   }
 
-  async fillFormForCompleteBookingTour(firstName, email, phone, address) {
+  async fillFormForCompleteBookingTour(bookingInfo) {
     await (await this.inputFirstName).waitForDisplayed({ timeout: 3000 });
-    await (await this.inputFirstName).addValue(firstName);
-    await (await this.inputEmail).addValue(email);
-    await (await this.inputPhone).addValue(phone);
-    await (await this.inputAddress).addValue(address);
+    await (await this.inputFirstName).addValue(bookingInfo.name);
+    await (await this.inputEmail).addValue(bookingInfo.email);
+    await (await this.inputPhone).addValue(bookingInfo.phone);
+    await (await this.inputAddress).addValue(bookingInfo.address);
     await (await this.buttonSubmit).click();
   }
 }

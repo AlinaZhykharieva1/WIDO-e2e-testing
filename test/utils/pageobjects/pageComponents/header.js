@@ -1,6 +1,4 @@
-import Page from './page';
-
-class Header extends Page {
+class Header {
     get accountMenu() {
         return $(':nth-child(3) > .dropdown > a');
     }

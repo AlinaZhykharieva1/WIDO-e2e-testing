@@ -1,6 +1,4 @@
-import Page from './page';
-
-class InvoicePage extends Page {
+class InvoicePage {
   get firstName() {
     return $('.clearfix > .go-left');
   }
@@ -33,13 +31,13 @@ class InvoicePage extends Page {
     return $('.alert');
   }
 
-  async paymentByCreditCard() {
+  async performPayByCreditCard() {
     await (await this.payment).click();
     await (await this.dropDownSelect).click();
     await (await this.paymentDropDownByCreditCard).click();
   }
 
-  async checkingThatMessageAppearsWhenInvalidDataIsEntered() {
+  async validateInvalidDataErrorMessage() {
     await (await this.buttonPay).click();
     await expect(await this.alertMessage).toBeDisplayed();
   }
