@@ -31,9 +31,9 @@ class DetailTourPage {
     return $('.cc-btn');
   }
 
-  async validateAmountOfAdults(expectedAmountOfAdults) {
-    await expect(await this.amountOfAdults).toHaveValue(expectedAmountOfAdults);
-  }
+  // async validateAmountOfAdults(expectedAmountOfAdults) {
+  //   await expect(await this.amountOfAdults).toHaveValue(expectedAmountOfAdults);
+  // }
 
   async choseMaximumAmountOfDays() {
     await (await this.getCookiesButton).click();
