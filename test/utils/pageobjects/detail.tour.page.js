@@ -1,40 +1,43 @@
+import Element from '../elements/base.element';
+import Input from '../elements/input';
+import Button from '../elements/button';
+
 class DetailTourPage {
   get buttonMaximumAmountOfDays() {
-    return $(':nth-child(1) > :nth-child(6) > .btn ');
+    return new Button(':nth-child(1) > :nth-child(6) > .btn ');
   }
 
   get inputFirstName() {
-    return $('[name = \'firstname\']');
+    return new Input('[name = \'firstname\']');
   }
 
   get inputPhone() {
-    return $('[name =\'phone\']');
+    return new Input('[name =\'phone\']');
   }
 
   get inputEmail() {
-    return $('.form-group > [name =\'email\']');
+    return new Input('.form-group > [name =\'email\']');
   }
 
   get inputAddress() {
-    return $('[name =\'address\']');
+    return new Input('[name =\'address\']');
   }
 
   get buttonSubmit() {
-    return $(' .col> #ClickMyButton');
+    return new Button(' .col> #ClickMyButton');
   }
 
   async choseMaximumAmountOfDays() {
-    await (await this.getCookiesButton).click();
-    await (await this.buttonMaximumAmountOfDays).click();
+    await this.buttonMaximumAmountOfDays.buttonClick();
   }
 
   async fillFormForCompleteBookingTour(bookingInfo) {
-    await (await this.inputFirstName).waitForDisplayed({ timeout: 3000 });
-    await (await this.inputFirstName).addValue(bookingInfo.name);
-    await (await this.inputEmail).addValue(bookingInfo.email);
-    await (await this.inputPhone).addValue(bookingInfo.phone);
-    await (await this.inputAddress).addValue(bookingInfo.address);
-    await (await this.buttonSubmit).click();
+    await this.inputFirstName.waitForElementDisplayed();
+    await this.inputFirstName.addValue(bookingInfo.name);
+    await this.inputEmail.addValue(bookingInfo.email);
+    await this.inputPhone.addValue(bookingInfo.phone);
+    await this.inputAddress.addValue(bookingInfo.address);
+    await this.buttonSubmit.buttonClick();
   }
 }
 

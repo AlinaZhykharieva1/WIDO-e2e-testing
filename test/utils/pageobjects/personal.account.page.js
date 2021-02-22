@@ -1,6 +1,8 @@
+import Element from '../elements/base.element';
+
 class PersonalAccountPage {
   get greeting() {
-    return $('h3.text-align-left');
+    return new Element('h3.text-align-left');
   }
 }
 

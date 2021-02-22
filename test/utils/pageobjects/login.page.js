@@ -1,20 +1,23 @@
+import Input from '../elements/input';
+import Button from '../elements/button';
+
 class LoginPage {
   get inputLogin() {
-    return $(':nth-child(1) > .pure-material-textfield-outlined > input');
+    return new Input(':nth-child(1) > .pure-material-textfield-outlined > input');
   }
 
   get inputPassword() {
-    return $(':nth-child(2) > .pure-material-textfield-outlined > input');
+    return new Input(':nth-child(2) > .pure-material-textfield-outlined > input');
   }
 
   get buttonLogIn() {
-    return $('button.loginbtn');
+    return new Button('button.loginbtn');
   }
 
   async loginUser(login, password) {
-    await (await this.inputLogin).addValue(login);
-    await (await this.inputPassword).addValue(password);
-    await (await this.buttonLogIn).click();
+    await this.inputLogin.addValue(login);
+    await this.inputPassword.addValue(password);
+    await this.buttonLogIn.buttonClick();
   }
 }
 

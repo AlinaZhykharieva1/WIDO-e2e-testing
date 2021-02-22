@@ -1,44 +1,48 @@
+import Element from '../elements/base.element';
+import DropDown from '../elements/drop.down';
+import Button from '../elements/button';
+
 class InvoicePage {
   get firstName() {
-    return $('.clearfix > .go-left');
+    return new Element('.clearfix > .go-left');
   }
 
   get address() {
-    return $(':nth-child(4) > .go-left');
+    return new Element(':nth-child(4) > .go-left');
   }
 
   get phone() {
-    return $(':nth-child(5) > .go-left');
+    return new Element(':nth-child(5) > .go-left');
   }
 
   get payment() {
-    return $('center > .btn-primary');
+    return new Button('center > .btn-primary');
   }
 
   get dropDownSelect() {
-    return $('#gateway_chosen > .chosen-single');
+    return new Element('#gateway_chosen > .chosen-single');
   }
 
   get paymentDropDownByCreditCard() {
-    return $('[data-option-array-index="3"]');
+    return new DropDown('[data-option-array-index="3"]');
   }
 
   get buttonPay() {
-    return $('.creditcardform > :nth-child(3) > .btn');
+    return new Button('.creditcardform > :nth-child(3) > .btn');
   }
 
   get alertMessage() {
-    return $('.alert');
+    return new Element('.alert');
   }
 
   async performPayByCreditCard() {
-    await (await this.payment).click();
-    await (await this.dropDownSelect).click();
-    await (await this.paymentDropDownByCreditCard).click();
+    await this.payment.buttonClick();
+    await this.dropDownSelect.elementClick();
+    await this.paymentDropDownByCreditCard.dropDownItemClick();
   }
 
   async clickPay() {
-    await (await this.buttonPay).click();
+    await this.buttonPay.buttonClick();
   }
 }
 

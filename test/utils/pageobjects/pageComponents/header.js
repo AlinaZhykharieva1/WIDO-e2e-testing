@@ -1,25 +1,26 @@
+import Link from '../../elements/link';
+
 class Header {
-    get accountMenu() {
-        return $(':nth-child(3) > .dropdown > a');
-    }
+  get accountMenu() {
+    return new Link(':nth-child(3) > .dropdown > a');
+  }
 
-    get loginSubMenu() {
-        return $('a[href*="login"]');
-    }
+  get loginSubMenu() {
+    return new Link('a[href*="login"]');
+  }
 
+  get headerLogo() {
+    return new Link('div.header-logo > a');
+  }
 
-    get headerLogo() {
-        return $('div.header-logo > a');
-    }
+  async clickLogin() {
+    await this.accountMenu.linkClick();
+    await this.loginSubMenu.linkClick();
+  }
 
-    async clickLogin() {
-        await (await this.accountMenu).click();
-        await (await this.loginSubMenu).click();
-    }
-
-    async goToHomePage() {
-        await (await this.headerLogo).click();
-    }
+  async goToHomePage() {
+    await this.headerLogo.linkClick();
+  }
 }
 
 export default new Header();

@@ -1,49 +1,56 @@
-class HomePage {
+// eslint-disable-next-line import/no-named-as-default
+import Element from '../elements/base.element';
+import Link from '../elements/link';
+import Input from '../elements/input';
+import DropDown from '../elements/drop.down';
+import Button from '../elements/button';
+
+class HomePage{
   get toursTab() {
-    return $('a.tours');
+    return new Link('a.tours');
   }
 
   get inputTour() {
-    return $('.locationlisttours >.select2-focusser.select2-offscreen');
+    return new Input('.locationlisttours >.select2-focusser.select2-offscreen');
   }
 
   get tourInDropDown() {
-    return $('.select2-results-dept-1 >.select2-result-label >.select2-match');
+    return new DropDown('.select2-results-dept-1 >.select2-result-label >.select2-match');
   }
 
   get tourType() {
-    return $('#tourtype_chosen');
+    return new Element('#tourtype_chosen');
   }
 
   get tourTypeInDropDown() {
-    return $('[data-option-array-index="4"]');
+    return new DropDown('[data-option-array-index="4"]');
   }
 
   get inputForDateTour() {
-    return $('#tours #DateTours');
+    return new Input('#tours #DateTours');
   }
 
-  get inputForIncreaseAmountOfAdults() {
-    return $('#tours input[name="adults"] ~ .input-group-btn-vertical > button[class*="bootstrap-touchspin-up"]');
+  get buttonForIncreaseAmountOfAdults() {
+    return new Button('#tours input[name="adults"] ~ .input-group-btn-vertical > button[class*="bootstrap-touchspin-up"]');
   }
 
   get buttonSearchTour() {
-    return $('#tours > .ftab-inner > .form-search-main-01 > form > .form-inner > .mb-20 > .col-lg-2 > .btn');
+    return new Button('#tours > .ftab-inner > .form-search-main-01 > form > .form-inner > .mb-20 > .col-lg-2 > .btn');
   }
 
   async clickToursTab() {
-    await (await this.toursTab).click();
+    await this.toursTab.linkClick();
   }
 
   async searchTour(tourName, dateOfStartTour) {
-    await (await this.inputTour).addValue(tourName);
-    await (await this.tourInDropDown).click();
-    await (await this.tourType).click();
-    await (await this.tourTypeInDropDown).click();
-    await (await this.inputForDateTour).clearValue();
-    await (await this.inputForDateTour).addValue(dateOfStartTour);
-    await (await this.inputForIncreaseAmountOfAdults).click();
-    await (await this.buttonSearchTour).click();
+    await this.inputTour.addValue(tourName);
+    await this.tourInDropDown.dropDownItemClick();
+    await this.tourType.elementClick();
+    await this.tourTypeInDropDown.dropDownItemClick();
+    await this.inputForDateTour.clearValue();
+    await this.inputForDateTour.addValue(dateOfStartTour);
+    await this.buttonForIncreaseAmountOfAdults.buttonClick();
+    await this.buttonSearchTour.buttonClick();
   }
 }
 
