@@ -1,4 +1,3 @@
-import Element from '../elements/base.element';
 import Input from '../elements/input';
 import Button from '../elements/button';
 

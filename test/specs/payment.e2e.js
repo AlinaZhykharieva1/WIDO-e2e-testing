@@ -33,7 +33,7 @@ describe('PHP travels platform', () => {
       await browser.url('/');
       await Header.clickLogin();
       await LoginPage.loginUser(credentials.login, credentials.password);
-      // await expect(PersonalAccountPage.greeting).toHaveText(bookingInfo.expectedGreeting);
+      await expect(PersonalAccountPage.greeting).toHaveText(bookingInfo.expectedGreeting);
       await Header.goToHomePage();
       await HomePage.clickToursTab();
       await HomePage.searchTour(tourDetail.tourName, tourDetail.dateOfTourStart);

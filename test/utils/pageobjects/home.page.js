@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-named-as-default
 import Element from '../elements/base.element';
 import Link from '../elements/link';
 import Input from '../elements/input';
