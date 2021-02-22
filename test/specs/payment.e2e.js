@@ -9,7 +9,6 @@ import InvoicePageValidator from '../utils/validators/invoice.page.validator';
 import requestPageWithCredentials from '../utils/helpers/get.credentials';
 import dataGeneration from '../utils/helpers/date.generation';
 
-const waitingPartOfUrl = 'home';
 const tourDetail = {
   tourName : 'Big Bus Tour of Dubai',
   dateOfTourStart : dataGeneration(30)
@@ -20,7 +19,7 @@ const bookingInfo = {
   phone: '+3805665656',
   email: 'dre@gh.com',
   expectedGreeting : 'Hi, Demo User',
-  expectedAmountOfAdults : '2'
+  expectedAdults : 'adults=2'
 };
 
 
@@ -30,7 +29,7 @@ describe('PHP travels platform', () => {
     credentials = await requestPageWithCredentials();
   });
 
-  it('Check that user can book tour and when invalid card for payment added error message displayed', 
+  it('Check that user can book tour and when invalid card for payment added error message displayed',
   async () => {
     await browser.url('/');
     await Header.clickLogin();
@@ -39,11 +38,12 @@ describe('PHP travels platform', () => {
     await Header.goToHomePage();
     await HomePage.clickToursTab();
     await HomePage.searchTour(tourDetail.tourName, tourDetail.dateOfTourStart);
-    await expect(PersonalAccountPage.amountOfAdults).toHaveValue(bookingInfo.expectedAmountOfAdults);
+    await expect(browser).toHaveUrlContaining(bookingInfo.expectedAdults)
     await DetailTourPage.choseMaximumAmountOfDays();
     await DetailTourPage.fillFormForCompleteBookingTour(bookingInfo);
     await InvoicePageValidator.comparingDetailsOfBooking(bookingInfo);
     await InvoicePage.performPayByCreditCard();
-    await InvoicePage.validateInvalidDataErrorMessage();
+    await InvoicePage.clickPay();
+    await expect(await InvoicePage.alertMessage).toBeDisplayed();
   });
 });

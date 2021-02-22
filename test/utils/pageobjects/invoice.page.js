@@ -37,9 +37,8 @@ class InvoicePage {
     await (await this.paymentDropDownByCreditCard).click();
   }
 
-  async validateInvalidDataErrorMessage() {
+  async clickPay() {
     await (await this.buttonPay).click();
-    await expect(await this.alertMessage).toBeDisplayed();
   }
 }
 

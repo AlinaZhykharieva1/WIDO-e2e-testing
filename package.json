@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio wdio.conf.js"
+    "test:local": "wdio wdio.local.conf.js",
+    "test:grid": "wdio wdio.grid.conf.js"
   },
   "keywords": [
     "mocha",
@@ -35,5 +36,7 @@
     "moment": "^2.29.1",
     "wdio-chromedriver-service": "^6.0.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "dotenv": "^8.1.0"
+  }
 }

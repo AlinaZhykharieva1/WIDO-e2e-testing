@@ -1,8 +1,4 @@
 class DetailTourPage {
-  get amountOfAdults() {
-    return $('#selectedAdults');
-  }
-
   get buttonMaximumAmountOfDays() {
     return $(':nth-child(1) > :nth-child(6) > .btn ');
   }
@@ -26,14 +22,6 @@ class DetailTourPage {
   get buttonSubmit() {
     return $(' .col> #ClickMyButton');
   }
-
-  get getCookiesButton() {
-    return $('.cc-btn');
-  }
-
-  // async validateAmountOfAdults(expectedAmountOfAdults) {
-  //   await expect(await this.amountOfAdults).toHaveValue(expectedAmountOfAdults);
-  // }
 
   async choseMaximumAmountOfDays() {
     await (await this.getCookiesButton).click();
