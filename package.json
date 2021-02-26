@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:local": "wdio wdio.local.conf.js",
-    "test:grid": "wdio wdio.grid.conf.js"
+    "test:grid": "wdio wdio.conf.js --"
   },
   "keywords": [
     "mocha",
@@ -34,9 +34,9 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "moment": "^2.29.1",
-    "wdio-chromedriver-service": "^6.0.4"
+    "wdio-chromedriver-service": "^6.0.4",
+    "webdriverio": "^7.0.8",
+    "yargs": "^16.2.0"
   },
-  "dependencies": {
-    "dotenv": "^8.1.0"
-  }
+  "dependencies": {}
 }
