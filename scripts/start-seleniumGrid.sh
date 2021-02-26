@@ -1,1 +1,0 @@
-java -jar ./selenium-grid -role hub
