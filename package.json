@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:local": "wdio wdio.local.conf.js",
     "test:grid": "wdio wdio.conf.js --"
   },
   "keywords": [
@@ -29,7 +28,9 @@
     "@wdio/selenium-standalone-service": "^6.12.1",
     "@wdio/spec-reporter": "^6.11.0",
     "axios": "^0.21.1",
+    "chai": "^4.3.0",
     "chromedriver": "^87.0.7",
+    "cucumber": "^7.0.0-rc.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",

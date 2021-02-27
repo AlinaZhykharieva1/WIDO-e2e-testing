@@ -1,13 +1,13 @@
-import HomePage from '../utils/pageobjects/home.page';
-import LoginPage from '../utils/pageobjects/login.page';
-import PersonalAccountPage from '../utils/pageobjects/personal.account.page';
-import DetailTourPage from '../utils/pageobjects/detail.tour.page';
-import InvoicePage from '../utils/pageobjects/invoice.page';
-import Header from '../utils/pageobjects/pageComponents/header';
-import InvoicePageValidator from '../utils/validators/invoice.page.validator';
+import HomePage from '../../features/utils/pageobjects/home.page';
+import LoginPage from '../../features/utils/pageobjects/login.page';
+import PersonalAccountPage from '../../features/utils/pageobjects/personal.account.page';
+import DetailTourPage from '../../features/utils/pageobjects/detail.tour.page';
+import InvoicePage from '../../features/utils/pageobjects/invoice.page';
+import Header from '../../features/utils/pageobjects/pageComponents/header';
+import InvoicePageValidator from '../../features/utils/validators/invoice.page.validator';
 
-import requestPageWithCredentials from '../utils/helpers/get.credentials';
-import dataGeneration from '../utils/helpers/date.generation';
+import requestPageWithCredentials from '../../features/utils/helpers/get.credentials';
+import dataGeneration from '../../features/utils/helpers/date.generation';
 
 const tourDetail = {
   tourName: 'Big Bus Tour of Dubai',
